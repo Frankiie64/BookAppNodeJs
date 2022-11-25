@@ -1,0 +1,18 @@
+<main class="m-4">
+     <div class="alert alert-warning" role="alert">
+            <div class="row m-1">
+                <div class="col-12 text-center">
+                    Estás seguro de eliminar el libro {{libro.title}}  ?
+                </div>                
+            </div>   
+            <div class="row">
+                <div class="row-col-12 text-center mt-2">
+                    <form method="post" action="/libro/eliminarLibro">
+                        <input type="hidden" name="Id" value="{{libro.id}}">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a href="/libro" type="button" class="btn btn-warning">volver atras</a>
+                    </form>
+                </div>  
+            </div>
+        </div>
+</main>

@@ -1,0 +1,35 @@
+<main class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    {{#if editMode}}Edición{{else}}Creación{{/if}} de editoriales
+                </div>
+                <div class="card-body">
+
+                    <form method="POST" action="/editorial/{{#if editMode}}editarEditorial{{else}}crearEditorial{{/if}}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre de la editorial:</label>
+                            <input required type="text" class="form-control" id="name" name="Name" value="{{#if editMode}}{{editorial.name}}{{/if}}" />
+                        </div>
+						<div class="mb-3">
+                            <label for="phone" class="form-label">Teléfono de la editorial:</label>
+                            <input required placeholder="809-123-4565" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="phone" name="Phone" value="{{#if editMode}}{{editorial.phone}}{{/if}}" />
+                        </div>
+						<div class="mb-3">
+                            <label for="pais" class="form-label">País de la editorial:</label>
+                            <input required type="text" class="form-control" id="pais" name="Pais" value="{{#if editMode}}{{editorial.pais}}{{/if}}" />
+                        </div>
+                        {{#if editMode}}
+                            <input type="hidden" name="Id" value="{{editorial.id}}">
+                        {{/if}}
+                        <div class="row-col-12 text-end">
+                            <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+                            <a href="/editorial" type="button" class="btn btn-warning">volver atras</a>
+                        </div>                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

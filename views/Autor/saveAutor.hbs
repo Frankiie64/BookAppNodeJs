@@ -1,0 +1,31 @@
+<main class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    {{#if editMode}}Edición{{else}}Creación{{/if}} de autores
+                </div>
+                <div class="card-body">
+
+                    <form method="POST" action="/autor/{{#if editMode}}editarAutor{{else}}crearAutor{{/if}}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre del autor:</label>
+                            <input required type="text" class="form-control" id="name" name="Name" value="{{#if editMode}}{{autor.name}}{{/if}}" />
+                        </div>
+						 <div class="mb-3">
+                            <label for="name" class="form-label">Correo del autor:</label>
+                            <input required type="email" class="form-control" id="email" name="Email" value="{{#if editMode}}{{autor.email}}{{/if}}" />
+                        </div>
+                        {{#if editMode}}
+                            <input type="hidden" name="Id" value="{{autor.id}}">
+                        {{/if}}
+                        <div class="row-col-12 text-end">
+                            <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+                            <a href="/autor" type="button" class="btn btn-warning">volver atras</a>
+                        </div>                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

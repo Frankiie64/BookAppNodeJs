@@ -1,0 +1,72 @@
+<main class="album py-2 bg-light">
+    <div class="container">
+        <div class="row mx-auto ">
+            {{#if hasCategoria}}
+            <div class="row">
+                <form class="form-control bg-light border-0" method="post" action="/">
+                    <div class="input-group ">
+                        <input class="form-control border border-1 border-primary" id="title" name="Title" type="text"
+                            placeholder="nombre del libro" />
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Seleccione una categoria</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {{#each categoria as |item|}}
+                            <div class="form-check ms-3 mb-2">
+                                <li>
+                                    <input class="form-check-input" value="{{item.id}}" type="checkbox"
+                                        name="categoryId" id="{{item.id}}">
+                                    <label class="form-check-label" for="{{item.id}}">
+                                        {{item.name}}
+                                    </label>
+                                </li>
+                            </div>
+                            {{/each}}
+                        </ul>
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            {{/if}}
+            {{#if hasLibro}}
+            <div class="row">
+                {{#each libro as |item|}}
+                <div class="col-6">
+                    <a href="/details/{{item.id}}?view=true" style="text-decoration:none;" class="text-dark">
+                        <div class="card bg-light my-3 border-0 shadow" style="max-width: 450rem; min-height:17.10rem">
+                            <div class="row g-0">
+                                <div class="col-md-5">
+                                    <img style="width:18rem;min-height:17.10rem;" src="{{item.ImageUrl}}"
+                                        class="img-fluid rounded-start" alt="{{item.title}}">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body ">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <h6 class=" fs-7">Año de Publicación : {{item.anio}}</h6>
+                                        <h6>Autor : {{item.author.dataValues.name}}</h6>
+                                        <h6>Editorial : {{item.editorial.dataValues.name}}</h6>
+                                        <h6>Categoria : {{item.Category.dataValues.name}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="alert alert-warning shadow" role="alert">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <strong>Todavía no se ha registrado ningún libro.</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <img style="width:auto; height:20em; " class="img-fluid mx-auto"
+                        src="https://mackmediagroup.com/wp-content/uploads/2018/01/web-design.png"
+                        alt='RegionsNotFound' />
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</main>

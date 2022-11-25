@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/css/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"/>    
+    <title>{{pageTitle}}</title>
+</head>
+<body >
+    <header>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg  mb-2">
+            <div class="container-fluid ">      
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link {{#if (isEqual "Home" module)}} active {{/if}}" aria-current="page" href="/">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{#if (isEqual "Libro" module)}} active {{/if}}" href="/libro">Libros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{#if (isEqual "Autor" module)}} active {{/if}}" href="/autor">Autores</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link {{#if (isEqual "Categoria" module)}} active {{/if}}" href="/categoria">Categorias</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link {{#if (isEqual "Editorial" module)}} active {{/if}}" href="/editorial">Editoriales</a>
+                        </li>
+                    </ul>   
+                </div>     
+            </div>
+        </nav>
+    </header>   
+    <main class="mb-5" >
+        {{{body}}}
+    </main>
+    <footer  class="w-100 border-top footer bg-light text-center">
+        <div class="container">
+            &copy; {{getCurrenteYear}} - BookApp - <span  class="text-dark text-muted"> Esta aplicacion fue completamento desarrollada por : <a href="https://github.com/Frankiie64" style="text-decoration:none; " class="text-dark" target="_blank">Franklyn Brea</a></span>
+        </div>
+    </footer>
+
+    <script src="/assets/js/Jquery/jquery-3.6.1.min.js"></script>
+    <script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="/public/assets/js/Toastr/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<main class="container">
+    <div class="row">
+        {{#if hasEditorial}}
+        {{#if hasAutors}}
+        {{#if hasCategoria}}
+        <div class="col-8 offset-2">
+            <div class="card border shadow border-1 border-success">
+                <div class="card-header bg-success text-white fw-bolder text-center">
+                    {{#if editMode}}Edición del{{else}}Creación del nuevo{{/if}} libro
+                </div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" method="POST" action="/libro/{{#if editMode}}editarlibro{{else}}crearlibro{{/if}}">
+                        <div class="row ">
+                            <div class="my-1 row">
+                                <div class="col-6">
+                                    <label for="name" class="form-label fw-bolder">Nombre del libro:</label>
+                                    <input required type="text" class="form-control border-1 border-success" id="name"
+                                        name="Title" value="{{#if editMode}}{{libro.title}}{{/if}}" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="anio" class="form-label fw-bolder">Año de publicación:</label>
+                                    <input required type="number" step="1" min="1" max="2022"
+                                        class="form-control border-1 border-success" id="anio" name="Anio"
+                                        value="{{#if editMode}}{{libro.anio}}{{/if}}" />
+                                </div>
+                            </div>
+                            <div class="my-2 row">
+                                <div class="col-6">
+                                    <label for="imgaUrl" class="form-label fw-bolder">Foto de portada:</label>
+                                    <input type="file" class="form-control border-1 border-success" id="imgaUrl" name="Image"
+                                    {{#if editMode}} {{else}}required{{/if}} />
+                                </div>
+                                <div class="col-6">
+                                    <label for="autorId" class="form-label fw-bolder">Autor: </label>
+                                    <select required class="form-select border-1 border-success" id="autorId"
+                                        name="AutorId">
+                                        {{#each autor as |item|}}
+                                        {{#if (isEqual item.id ../libro.authorId )}}
+                                        <option selected value="{{item.id}}">{{item.name}}</option>
+                                        {{else}}
+                                        <option value="{{item.id}}">{{item.name}}</option>
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="my-2 row">
+                                <div class="col-6">
+                                    <label for="editorial" class="form-label fw-bolder">Editorial: </label>
+                                    <select class="form-select border-1 border-success" id="editorial" name="EditorialId">
+                                        {{#each editorial as |item|}}
+                                        {{#if (isEqual item.id ../libro.editorialId )}}
+                                        <option selected value="{{item.id}}">{{item.name}}</option>
+                                        {{else}}
+                                        <option value="{{item.id}}">{{item.name}}</option>
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="categoria" class="form-label fw-bolder">Categoria: </label>
+                                    <select class="form-select border-1 border-success" id="categoria" name="CategoriaId">
+                                        {{#each categoria as |item|}}
+                                        {{#if (isEqual item.id ../libro.CategoryId )}}
+                                        <option selected value="{{item.id}}">{{item.name}}</option>
+                                        {{else}}
+                                        <option value="{{item.id}}">{{item.name}}</option>
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        {{#if editMode}}
+                        <input type="hidden" name="Id" value="{{libro.id}}">
+                        {{/if}}
+                        <div class="row d-grid gap-2 me-2 ">
+                            <button type="submit" class="m-1 btn btn-outline-primary">{{#if
+                                editMode}}Editar{{else}}Crear{{/if}}</button>
+                            <a href="/libro" type="button" class="m-1 btn btn-outline-warning btn">volver atras</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="alert alert-warning" role="alert">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    Todavía no has creado ninguna Categoria.
+                </div>
+                <div class="col-6 text-end">
+                    <a type="button" class="btn btn-primary btn-sm" href="/categoria/crearCategoria">
+                        Agregar Categoria
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{else}}
+        <div class="alert alert-warning" role="alert">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    Todavía no se ha registrado ningun autor.
+                </div>
+                <div class="col-6 text-end">
+                    <a type="button" class="btn btn-primary btn-sm" href="/autor/crearAutor">
+                        Agregar autor
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{else}}
+        <div class="alert alert-warning" role="alert">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    Todavía no se ha registrado ninguna editorial.
+                </div>
+                <div class="col-6 text-end">
+                    <a type="button" class="btn btn-primary btn-sm" href="/editorial/crearEditorial">
+                        Agregar editorial
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</main>

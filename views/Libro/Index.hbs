@@ -1,0 +1,65 @@
+<main class="album py-2 bg-light">
+    <div class="container">
+        <div class="row mx-auto ">
+            {{#if hasLibro}}
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    &nbsp;
+                </div>
+                <div class="col-6 text-end">
+                    <a type="button" class="btn btn-primary btn-sm" href="/Libro/crearLibro">
+                        Agregar libro
+                    </a>
+                </div>
+            </div>
+            {{#each libro as |item|}}
+            <div class="col-6">
+                <div class="card bg-light my-3 border-0 shadow" style="max-width: 450rem; min-height:17.10rem">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img style="width:18rem;min-height:17.10rem;" src="{{item.ImageUrl}}" class="img-fluid rounded-start"
+                                alt="{{item.title}}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body ">
+                                <h5 class="card-title">{{item.title}}</h5>
+                                <h6>Año de Publicación : {{item.anio}}</h6>
+                                <h6>Autor : {{item.author.dataValues.name}}</h6>
+                                <h6>Editorial : {{item.editorial.dataValues.name}}</h6>
+                                <h6>Categoria : {{item.Category.dataValues.name}}</h6>
+                            </div>
+                            <div class="d-flex justify-content-evenly">
+                                <a href="/Libro/editarLibro/{{item.id}}?edit=true" class="btn btn-outline-warning">Editar</a>
+                                <a href="/Libro/eliminarLibro/{{item.id}}?delete=true" class="btn btn-outline-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+            {{/each}}
+
+            {{else}}
+
+            <div class="alert alert-warning" role="alert">
+                <div class="row">
+                    <div class="col-6 mx-auto">
+                        Todavía no has creado níngun libros.
+                    </div>
+                    <div class="col-6 text-end">
+                        <a type="button" class="btn btn-primary btn-sm" href="/Libro/crearLibro">
+                            Agregar libro
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <img style="width:auto; height:20em; " class="img-fluid mx-auto"
+                        src="https://mackmediagroup.com/wp-content/uploads/2018/01/web-design.png"
+                        alt='RegionsNotFound' />
+                </div>
+            </div>
+
+            {{/if}}
+
+        </div>
+    </div>
+</main>

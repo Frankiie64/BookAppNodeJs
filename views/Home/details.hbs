@@ -1,0 +1,28 @@
+<main class="container m-3 mt-5 mx-auto bg-light">
+    <div class="card shadow border-0 m-1 bg-light">
+        <div class="row g-0 m-1">
+            <div class="col-md-3 bg-light">
+                <img src="{{libro.ImageUrl}}" class="img-fluid rounded-start" alt="{{libro.title}}" style="min-height: 18rem;" />
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">{{libro.title}}</h5>
+                    <p class="card-text">
+                        <small>
+                            Fecha de Publicación: {{libro.anio}}
+                            <hr class="bg-dark">
+                            Categoria : {{libro.Category.dataValues.name}}
+                            <hr class="bg-dark">
+                            Autor : {{libro.author.dataValues.name}} - correo electronico :  {{libro.author.dataValues.email}}
+                            <hr class="bg-dark">
+                            Editorial : {{libro.editorial.dataValues.name}} - Numero de teléfono : {{libro.editorial.dataValues.phone}} - País : {{libro.editorial.dataValues.pais}}
+                        </small>
+                    </p>
+                    <div class="d-flex justify-content-end ">
+                        <a href="/" class="btn btn-sm btn-outline-warning">Vovler atras</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
